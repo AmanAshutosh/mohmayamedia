@@ -3,9 +3,6 @@ const scroll = new LocomotiveScroll({
   smooth: true,
 });
 
-
-
-
 function page4Animation() {
   var elemC = document.querySelector("#elem-container");
   var fixed = document.querySelector("#fixed-image");
@@ -56,6 +53,20 @@ function loaderAnimation() {
     loader.style.top = "-100%";
   }, 4200);
 }
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: "auto",
+  centeredSlides: false,
+  loop: true,
+  freeMode: true, // KEY: enables free scrolling rather than snap-to-slide
+  spaceBetween: 100,
+  speed: 8000, // Higher value = slower, smoother scroll (in ms per loop)
+  allowTouchMove: false, // Optional: disables manual drag for a pure marquee
+  autoplay: {
+    delay: 1, // 1ms between automatic moves -- creates continuous movement
+    disableOnInteraction: false, // Keeps moving even after interactions
+  },
+});
 
 swiperAnimation();
 page4Animation();
