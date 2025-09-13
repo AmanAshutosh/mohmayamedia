@@ -130,7 +130,7 @@ nav h3 {
   position: relative;
   border-radius: 30px;
   margin-top: 4vw;
-  width: 100%;
+  max-width: 100%;
 }
 
 #hero-shape {
@@ -335,7 +335,7 @@ nav h3 {
 }
 
 .elem h2 {
-  font-size: 3vw;
+  font-size: clamp(4vw, 6vw, 8vw);
   position: relative;
   z-index: 9;
 }
@@ -355,14 +355,14 @@ nav h3 {
 }
 
 #fixed-image {
-  height: 30vw;
-  width: 24vw;
+  height: 50vw !important;
+  width: 40vw !important;
   /* background-color: red; */
   border-radius: 15px;
   position: fixed;
   z-index: 99;
   left: 50%;
-  top: 25%;
+  top: 30%;
   display: none;
   background-size: cover;
   background-position: center;
@@ -446,6 +446,12 @@ nav h3 {
 #full-div1 ul li a:hover {
   color: #fe320a;
 }
+
+#bottom-part2 {
+  position: relative;
+  overflow: visible; /* allow overflow on hover */
+}
+
 #footer {
   position: fixed;
   height: 105vh;
@@ -473,13 +479,26 @@ nav h3 {
   filter: blur(90px);
 } */
 
-#footer-div1 {
+/* #footer-div1 {
   height: 10vh;
   width: 100%;
   border-radius: 10%;
   background: linear-gradient(to right, #ff2d03, #ff5c0b);
   filter: blur(90px);
   animation: footerBlob 6s ease-in-out infinite alternate;
+} */
+
+#footer-div1 {
+  height: 10vh;
+  filter: blur(90px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  background: linear-gradient(to right, #ff2d03, #ff5c0b);
+  animation: footerBlob 6s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 /* Animation keyframes */
@@ -523,17 +542,16 @@ nav h3 {
 } */
 
 #footer-div1 {
-    pointer-events: none; /* important! */
-    position: absolute;   /* optional: make positioning predictable */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10vh; /* or your existing height */
-    z-index: 5;   /* below email section */
-    filter: blur(90px);
-    background-color: red; /* your animated color */
+  pointer-events: none; /* important! */
+  position: absolute; /* optional: make positioning predictable */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh; /* or your existing height */
+  z-index: 5; /* below email section */
+  filter: blur(90px);
+  background-color: red; /* your animated color */
 }
-
 
 /* Mobile adjustments */
 /* @media (max-width: 600px) {
@@ -623,20 +641,21 @@ nav h3 {
   }
 
   #center h1 {
-    font-size: 17vw;
+    font-size: 14vw;
     text-align: right;
-    line-height: 15vw;
+    line-height: 14vw;
   }
 
   #page1 video {
     position: relative;
-    border-radius: 15px;
+    width: 100vw;
+    height: auto;
+    max-height: 60vh; /* Optional: to prevent overflow */
+    border-radius: 8px; /* Slightly reduced for mobile */
     margin-top: 4vw;
-    height: 70vh;
     object-fit: cover;
     object-position: center;
-    width: 92%;
-    margin-left: 4%;
+    margin-left: 0;
   }
 
   #page2 {
@@ -715,6 +734,11 @@ nav h3 {
     font-size: 3vw;
   }
 
+  #bottom-part2 img {
+    width: 100%;
+    max-width: none;
+  }
+
   #page2 #gooey {
     height: 62vw;
     width: 62vw;
@@ -732,6 +756,63 @@ nav h3 {
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
   }
+
+  .elem {
+    height: 130px; /* Slightly taller in mobile, adjust as needed */
+  }
+
+  .swiper-slide {
+    width: 100vw !important;
+    min-width: 100vw !important;
+    border-left: none;
+    padding: 0 5vw;
+    box-sizing: border-box;
+    text-align: left;
+  }
+  .swiper-slide h2 {
+    font-size: 6vw; /* Adjust for good headline size */
+    margin-bottom: 3vw;
+    text-align: left;
+  }
+  .swiper-slide p {
+    font-size: 4vw; /* Bigger for readability */
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  #footer-div1 {
+    height: 12vh; /* Slightly increase height if needed */
+    top: auto; /* Remove fixed top */
+    bottom: 25vh; /* Position it closer to the M2media text */
+  }
+}
+
+@media (min-width: 1200px) {
+  .elem h2 {
+    font-size: 3vw; /* smaller on very large screens */
+  }
+
+  #bottom-part2 img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
+
+  #bottom-part2 img:hover {
+    transform: scale(1.05);
+    z-index: 10;
+  }
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
 }
 
 #loader {
